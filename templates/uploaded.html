@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block content%}
+
+    <h1 class="pt-4 pb-4 text-center">Uploaded File: "{{ filename }}"</h1>
+    
+    {% for line in lines %}
+        <p>{{ line }}</p>
+    {% endfor %}
+
+{% endblock %}
