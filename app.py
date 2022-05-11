@@ -1,34 +1,34 @@
-import os
-from flask import Flask, render_template, request, redirect, url_for
+from upload_file import upload_file
+from read_file import read_file
+from generate_wordcloud import generate_wordcloud
+from flask import Flask, render_template, redirect, url_for
+
 
 UPLOAD_FOLDER = '/tmp/'
 app = Flask(__name__)
 
 
 @app.route("/", methods=['GET'])
-def hello_world():
+def index():
     return render_template("index.html")
 
 
 @app.route("/upload-file", methods=['POST'])
-def upload_file():
-    file = request.files['file']
-    filename = file.filename
-    file.save(os.path.join(UPLOAD_FOLDER, filename))
-    return redirect(url_for('uploaded', filename=filename))
+def upload():
+    return redirect(url_for('uploaded', filename=upload_file(UPLOAD_FOLDER)))
 
 
 @app.route("/uploaded/<string:filename>", methods=['GET'])
 def uploaded(filename):
-    filepath = UPLOAD_FOLDER + filename
-
-    file = open(filepath, 'r')
-    lines = file.readlines()
-    return render_template("uploaded.html", lines=lines, filename=filename)
+    return render_template(
+        "uploaded.html",
+        lines=read_file(UPLOAD_FOLDER + filename),
+        filename=filename)
 
 
 @app.route("/analyse/<string:filename>")
 def analyse(filename):
+    generate_wordcloud(UPLOAD_FOLDER + filename)
     return render_template("analyse.html", filename=filename)
 
 
