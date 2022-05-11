@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Analyse File{% endblock %}
+
+{% block content %}
+
+    <h1 class="pt-4 pb-2 text-center">Analysed File: "{{ filename }}"</h1>
+
+    <div class="row mt-4">
+        <div class="col-lg-8 col-sm-12">
+            <img src="{{ url_for('static', filename='wordcloud.jpg') }}" alt="Word Cloud" class="img-fluid">
+        </div>
+        <div class="col-lg-4 col-sm-12">
+
+            <h2 class="pt-4 text-center">Sentiment Analysis</h2>
+
+            <div class="alert alert-danger" role="alert">
+                Negative: 31%
+            </div>
+            <div class="alert alert-primary" role="alert">
+                Neutral: 57%
+            </div>
+            <div class="alert alert-success" role="alert">
+                Positive: 12%
+            </div>
+            
+
+        </div>
+    </div>
+
+    
+
+
+{% endblock %}

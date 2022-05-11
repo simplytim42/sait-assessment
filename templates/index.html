@@ -2,13 +2,14 @@
 
 {% block title %}Home{% endblock %}
 
-{% block content%}
+{% block content %}
 
     <h1 class="pt-4 pb-4 text-center">Upload Text File</h1>
 
     <div class="row mt-5">
-        <div class="col"></div>
-        <div class="col">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
             <form action="/upload-file" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="file" class="form-label">Select File</label>
@@ -18,8 +19,9 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+            
         </div>
-        <div class="col"></div>
+        <div class="col-md-3"></div>
     </div>
 
 {% endblock %}

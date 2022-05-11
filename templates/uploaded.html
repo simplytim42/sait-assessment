@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}Uploaded File{% endblock %}
 
-{% block content%}
+{% block content %}
 
-    <h1 class="pt-4 pb-4 text-center">Uploaded File: "{{ filename }}"</h1>
-    
-    {% for line in lines %}
-        <p>{{ line }}</p>
-    {% endfor %}
+    <h1 class="pt-4 pb-2 text-center">Uploaded File: "{{ filename }}"</h1> 
+
+    <div class="row mt-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <a href="{{ url_for('analyse', filename=filename) }}">
+                <span class="btn btn-warning mb-2">Analyse This Text</span>
+            </a>
+
+            {% for line in lines %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 {% endblock %}
