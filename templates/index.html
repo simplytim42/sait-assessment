@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<div class="container bg-white vh-100">
+    <h1 class="pt-4 pb-4 text-center">Upload Text File</h1>
+
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col">
+            <form action="/upload-file" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Select File</label>
+                    <input class="form-control" type="file" name="file" id="file">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+</div>
+{% endblock %}
